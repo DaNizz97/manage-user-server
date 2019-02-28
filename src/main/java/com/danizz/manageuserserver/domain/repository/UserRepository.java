@@ -13,4 +13,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     Iterable<User> findAllByLastName(@NotBlank String lastName);
 
+    void deleteById(Long id);
+
 }
