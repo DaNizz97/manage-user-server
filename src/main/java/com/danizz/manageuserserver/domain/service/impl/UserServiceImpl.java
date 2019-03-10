@@ -1,7 +1,7 @@
 package com.danizz.manageuserserver.domain.service.impl;
 
 import com.danizz.manageuserserver.domain.entity.User;
-import com.danizz.manageuserserver.domain.repository.ResourceNotFoundException;
+import com.danizz.manageuserserver.domain.exception.ResourceNotFoundException;
 import com.danizz.manageuserserver.domain.repository.UserRepository;
 import com.danizz.manageuserserver.domain.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
