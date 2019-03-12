@@ -4,7 +4,7 @@ import com.danizz.manageuserserver.domain.entity.User;
 
 public interface UserService {
 
-    Iterable<User> getAllUsers();
+    Iterable<User> getAll();
 
     Iterable<User> getAllByFirstName(String firstName);
 

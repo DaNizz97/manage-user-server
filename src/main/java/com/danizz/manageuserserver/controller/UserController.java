@@ -3,11 +3,11 @@ package com.danizz.manageuserserver.controller;
 import com.danizz.manageuserserver.domain.entity.User;
 import com.danizz.manageuserserver.domain.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping(path = "/api/users")
 public class UserController {
 
     private UserService userService;
@@ -17,14 +17,25 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping(path = "/get")
+    @GetMapping
     public Iterable<User> getAllUsers() {
-        return userService.getAllUsers();
+        return userService.getAll();
     }
 
-    @GetMapping(path = "/get/{id}")
+    @GetMapping(path = "/{id}")
     public User getById(@PathVariable Long id) {
         return userService.get(id);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public User create(@RequestBody User user) {
+        return userService.save(user);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public void delete(@PathVariable Long id) {
+        userService.deleteById(id);
     }
 
 }
